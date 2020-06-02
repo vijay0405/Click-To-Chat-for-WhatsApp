@@ -125,7 +125,7 @@ class _MessageCardState extends State<MessageCard> {
               children: <Widget>[
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Enter Phone Number'),
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.number,
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Invalid input!';
