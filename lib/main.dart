@@ -151,7 +151,7 @@ class _MessageCardState extends State<MessageCard> {
                 SizedBox(
                   height: 20,
                 ),
-                Text("The phone number should contain country code, without any symbols")
+                Text("The phone number should contain country code, without any symbols like (918099891235)")
               ],
             ),
           ),
