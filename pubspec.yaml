@@ -20,6 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   url_launcher: ^5.4.10
+  
 
 
 
@@ -30,6 +31,15 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.7.5
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "dev_assets/icons8-double-tick-96.png"
+  adaptive_icon_background: "#075E54"
+  adaptive_icon_foreground: "dev_assets/icons8-double-tick-96.png"
+
 
 
 # For information on the generic Dart part of this file, see the
