@@ -39,7 +39,7 @@ class MyHomePage extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('WhatsApp Number'),
+          title: Text('WatsApp Number'),
         ),
         body: Stack(
           children: <Widget>[
@@ -151,7 +151,7 @@ class _MessageCardState extends State<MessageCard> {
                 SizedBox(
                   height: 20,
                 ),
-                Text("The phone number should contain country code, without any symbols like (918099891235)")
+                Text("The phone number should contain country code, without any symbols "), Text("Ex: (918099891235)", style: TextStyle(fontFamily: "RobotoCondensed"))
               ],
             ),
           ),
