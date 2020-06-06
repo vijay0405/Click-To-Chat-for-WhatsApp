@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:country_code_picker/country_code_picker.dart';
+
 
 void main() => runApp(MyApp());
-
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -16,27 +17,23 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return MaterialApp(
       title: 'WhatsNum',
-            theme: ThemeData(
-        primarySwatch:Colors.teal,
-        accentColor: Colors.amber,
-        canvasColor: Color.fromRGBO(255, 254, 229, 1),
-        fontFamily: 'Raleway',
-        textTheme: ThemeData.light().textTheme.copyWith(
-          body1 : TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
-          body2 : TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
-          title: TextStyle(
-            fontSize: 20,
-            fontFamily: 'RobotoCondensed',
-            fontWeight: FontWeight.bold
-          )
-        )
-      ),
+      theme: ThemeData(
+          primarySwatch: Colors.teal,
+          accentColor: Colors.amber,
+          canvasColor: Color.fromRGBO(255, 254, 229, 1),
+          fontFamily: 'Raleway',
+          textTheme: ThemeData.light().textTheme.copyWith(
+              body1: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
+              body2: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
+              title: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'RobotoCondensed',
+                  fontWeight: FontWeight.bold))),
       home: Scaffold(
         appBar: AppBar(
           title: Text('WatsApp Number'),
@@ -114,7 +111,7 @@ class _MessageCardState extends State<MessageCard> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeIn,
-        height: 260,
+        height: 360,
         constraints: BoxConstraints(minHeight: 260),
         width: deviceSize.width * 0.75,
         padding: EdgeInsets.all(16.0),
@@ -123,6 +120,18 @@ class _MessageCardState extends State<MessageCard> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
+                CountryCodePicker(
+                  onChanged: print,
+                  // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                  initialSelection: 'IN',
+                  favorite: ['+91', 'IN'],
+                  // optional. Shows only country name and flag
+                  showCountryOnly: false,
+                  // optional. Shows only country name and flag when popup is closed.
+                  showOnlyCountryWhenClosed: false,
+                  // optional. aligns the flag and the Text left
+                  alignLeft: false,
+                ),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Enter Phone Number'),
                   keyboardType: TextInputType.number,
@@ -151,7 +160,10 @@ class _MessageCardState extends State<MessageCard> {
                 SizedBox(
                   height: 20,
                 ),
-                Text("The phone number should contain country code, without any symbols "), Text("Ex: (918099891235)", style: TextStyle(fontFamily: "RobotoCondensed"))
+                Text(
+                    "Select the country code from above picker, and enter phone number "),
+                Text("Ex: (8099891235)",
+                    style: TextStyle(fontFamily: "RobotoCondensed"))
               ],
             ),
           ),
