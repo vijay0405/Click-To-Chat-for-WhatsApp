@@ -84,6 +84,7 @@ class MessageCard extends StatefulWidget {
 class _MessageCardState extends State<MessageCard> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   var phoneNumber = "";
+  var countryCode = "91";
 
   void _launchURL() async {
     if (!_formKey.currentState.validate()) {
@@ -92,12 +93,17 @@ class _MessageCardState extends State<MessageCard> {
     }
     _formKey.currentState.save();
 
-    var url = 'https://api.WhatsApp.com/send?phone=' + phoneNumber;
+    var url = 'https://api.WhatsApp.com/send?phone=' + countryCode + phoneNumber;
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  void _changedcountry(ct) {
+    countryCode = ct.toString().substring(1);
+    print(countryCode);
   }
 
   @override
@@ -121,7 +127,7 @@ class _MessageCardState extends State<MessageCard> {
             child: Column(
               children: <Widget>[
                 CountryCodePicker(
-                  onChanged: print,
+                  onChanged: _changedcountry,
                   // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                   initialSelection: 'IN',
                   favorite: ['+91', 'IN'],
