@@ -1,4 +1,4 @@
-package com.vmakeapps.whatsapp.number;
+package com.vmakeapps.watsapp.number;
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity;
