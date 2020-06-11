@@ -8,7 +8,8 @@ class HelpScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text("Help"),
         ),
-        body: Column(
+        body: SingleChildScrollView(
+            child: Column(
           children: <Widget>[
             Lottie.asset(
               'assets/character.json',
@@ -27,7 +28,7 @@ class HelpScreen extends StatelessWidget {
                 ),
               ),
             ),
-          Image.asset('assets/images/phone-input.jpg'),
+            Image.asset('assets/images/phone-input.jpg'),
             Padding(
               padding: EdgeInsets.all(10),
               child: Text(
@@ -40,6 +41,6 @@ class HelpScreen extends StatelessWidget {
               ),
             ),
           ],
-        ));
+        )));
   }
 }
