@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'drawer.dart';
+
+
 
 
 void main() => runApp(MyApp());
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -38,6 +43,7 @@ class MyHomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text('WatsApp Number'),
         ),
+        drawer: MainDrawer(),
         body: Stack(
           children: <Widget>[
             Container(
@@ -53,6 +59,7 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
             ),
+            Lottie.asset('assets/paper-plane.json'),
             SingleChildScrollView(
               child: Container(
                 height: deviceSize.height,
@@ -68,7 +75,7 @@ class MyHomePage extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),

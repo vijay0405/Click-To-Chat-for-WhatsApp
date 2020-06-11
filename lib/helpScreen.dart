@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+
+class HelpScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Help"),
+        ),
+        body: SingleChildScrollView(
+            child: Column(
+          children: <Widget>[
+            // Lottie.asset(
+            //   'assets/character.json',
+            //   width: 100,
+            //   height: 150,
+            //   fit: BoxFit.fill,
+            // ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "This App will help you in sending messages to new numbers which are not saved in your conacts.",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Raleway',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            Image.asset('assets/images/select-country.jpg', cacheHeight: 300, cacheWidth: 250,),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "Choose the country from the picker shown above.",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'Raleway',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            Image.asset('assets/images/phone-input.jpg', cacheHeight: 300, cacheWidth: 250,),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "Enter the phone number in the input shown in above picture and click on start messaging button.",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'Raleway',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
+        )));
+  }
+}
