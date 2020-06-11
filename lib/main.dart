@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'drawer.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -37,6 +39,7 @@ class MyHomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text('WhatsApp Number'),
         ),
+        drawer: MainDrawer(),
         body: Stack(
           children: <Widget>[
             Container(
