@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class HelpScreen extends StatelessWidget {
   @override
@@ -11,12 +10,6 @@ class HelpScreen extends StatelessWidget {
         body: SingleChildScrollView(
             child: Column(
           children: <Widget>[
-            // Lottie.asset(
-            //   'assets/character.json',
-            //   width: 100,
-            //   height: 150,
-            //   fit: BoxFit.fill,
-            // ),
             Padding(
               padding: EdgeInsets.all(10),
               child: Text(
