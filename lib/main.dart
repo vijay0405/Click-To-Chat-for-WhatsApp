@@ -4,7 +4,11 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'drawer.dart';
 
+
+
+
 void main() => runApp(MyApp());
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -37,7 +41,7 @@ class MyHomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold))),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('WhatsApp Number'),
+          title: Text('WatsApp Number'),
         ),
         drawer: MainDrawer(),
         body: Stack(
@@ -96,8 +100,7 @@ class _MessageCardState extends State<MessageCard> {
     }
     _formKey.currentState.save();
 
-    var url =
-        'https://api.WhatsApp.com/send?phone=' + countryCode + phoneNumber;
+    var url = 'https://api.WhatsApp.com/send?phone=' + countryCode + phoneNumber;
     if (await canLaunch(url)) {
       await launch(url);
     } else {
