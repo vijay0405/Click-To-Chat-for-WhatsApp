@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:package_info/package_info.dart';
 import 'helpScreen.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -17,15 +16,6 @@ class MainDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String appName = 'watsapp number';
-    String version = "2.0.0";
-
-    PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
-      appName = packageInfo.appName;
-      String packageName = packageInfo.packageName;
-      version = packageInfo.version;
-      String buildNumber = packageInfo.buildNumber;
-    });
     return Drawer(
         child: Column(
       children: <Widget>[
@@ -43,18 +33,6 @@ class MainDrawer extends StatelessWidget {
         ),
         SizedBox(
           height: 20,
-        ),
-        Container(
-          height: 120,
-          width: double.infinity,
-          padding: EdgeInsets.all(20),
-          alignment: Alignment.centerLeft,
-          color: Colors.teal,
-          child: Text(appName.toString() + version.toString(),
-              style: TextStyle(
-                fontSize: 20,
-                color: Color.fromRGBO(255, 254, 229, 1),
-              )),
         ),
         buildListTile("Help", Icons.help, () {
           Navigator.push(
