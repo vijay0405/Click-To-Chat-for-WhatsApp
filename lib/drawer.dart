@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'helpScreen.dart';
+import 'QRScreen.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
@@ -39,6 +40,17 @@ class MainDrawer extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (_) => HelpScreen(),
+            ),
+          );
+        }),
+        SizedBox(
+          height: 20,
+        ),
+        buildListTile("Share Using QR", Icons.help, () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => QRScreen(),
             ),
           );
         }),
