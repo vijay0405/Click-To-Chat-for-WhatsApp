@@ -62,6 +62,7 @@ flutter:
    - assets/character.json
    - assets/images/phone-input.jpg
    - assets/images/select-country.jpg
+   - assets/images/ic_no_image.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
