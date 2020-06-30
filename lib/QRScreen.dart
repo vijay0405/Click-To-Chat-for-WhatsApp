@@ -9,6 +9,7 @@ class QRScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey<FormState> _formKey = GlobalKey();
     var phoneNumber = "";
+    TextEditingController searchEditor = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -24,28 +25,23 @@ class QRScreen extends StatelessWidget {
                   barcode: Barcode.qrCode(
                     errorCorrectLevel: BarcodeQRCorrectionLevel.high,
                   ),
-                  data: phoneNumber,
+                  data: 'https://api.WhatsApp.com/send?phone=' + phoneNumber,
                   width: 200,
                   height: 200,
                 ),
-                TextFormField(
-                  decoration:
-                      InputDecoration(labelText: 'Enter Your Phone Number'),
-                  keyboardType: TextInputType.number,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Invalid input!';
-                    }
-                  },
-                  onSaved: (value) {
-                    phoneNumber = value;
-                  },
-                ),
+                TextField(
+                    cursorWidth: 200,
+                    controller: searchEditor,
+                    autofocus: false,
+                    keyboardType: TextInputType.number,
+                    onChanged: (str) {
+                      phoneNumber = (str == null) ? "" : str;
+                    }),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
-                    "Share this geneated qr with any one instead of sharing number."),
+                    "Any one can start conversation with you by scanning the qr code."),
                 // Text("Ex: (8099891235)",
                 //     style: TextStyle(fontFamily: "RobotoCondensed"))
               ],
