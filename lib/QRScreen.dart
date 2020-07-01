@@ -16,37 +16,31 @@ class QRScreen extends StatelessWidget {
         title: Text("Share QR"),
       ),
       body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                BarcodeWidget(
-                  barcode: Barcode.qrCode(
-                    errorCorrectLevel: BarcodeQRCorrectionLevel.high,
-                  ),
-                  data: 'https://api.WhatsApp.com/send?phone=' + phoneNumber,
-                  width: 200,
-                  height: 200,
-                ),
-                TextField(
-                    cursorWidth: 200,
-                    controller: searchEditor,
-                    autofocus: false,
-                    keyboardType: TextInputType.number,
-                    onChanged: (str) {
-                      phoneNumber = (str == null) ? "" : str;
-                    }),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                    "Any one can start conversation with you by scanning the qr code."),
-                // Text("Ex: (8099891235)",
-                //     style: TextStyle(fontFamily: "RobotoCondensed"))
-              ],
+        child: Column(
+          children: <Widget>[
+            BarcodeWidget(
+              barcode: Barcode.qrCode(
+                errorCorrectLevel: BarcodeQRCorrectionLevel.high,
+              ),
+              data: 'https://api.WhatsApp.com/send?phone=' + phoneNumber,
+              width: 200,
+              height: 200,
             ),
-          ),
+            TextField(
+                controller: searchEditor,
+                autofocus: false,
+                keyboardType: TextInputType.number,
+                onChanged: (str) {
+                  phoneNumber = (str == null) ? "" : str;
+                }),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+                "Any one can start conversation with you by scanning the qr code."),
+            // Text("Ex: (8099891235)",
+            //     style: TextStyle(fontFamily: "RobotoCondensed"))
+          ],
         ),
       ),
     );
