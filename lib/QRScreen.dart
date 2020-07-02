@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 
-
 class QRScreen extends StatefulWidget {
   @override
   _QRScreenState createState() => _QRScreenState();
@@ -104,18 +103,24 @@ class _QRScreenState extends State<QRScreen> {
                                         return AlertDialog(
                                           // Retrieve the text the that user has entered by using the
                                           // TextEditingController.
-                                          content: BarcodeWidget(
-                                            barcode: Barcode.qrCode(
-                                              errorCorrectLevel:
-                                                  BarcodeQRCorrectionLevel.high,
+                                          content: Column(children: <Widget>[
+                                            BarcodeWidget(
+                                              barcode: Barcode.qrCode(
+                                                errorCorrectLevel:
+                                                    BarcodeQRCorrectionLevel
+                                                        .high,
+                                              ),
+                                              data:
+                                                  'https://api.WhatsApp.com/send?phone=' +
+                                                      countryCode +
+                                                      _qrTextEditingController
+                                                          .text,
+                                              width: 200,
+                                              height: 200,
                                             ),
-                                            data:
-                                                'https://api.WhatsApp.com/send?phone=' + countryCode + 
-                                                    _qrTextEditingController
-                                                        .text,
-                                            width: 200,
-                                            height: 200,
-                                          ),
+                                            Text(countryCode +
+                                                _qrTextEditingController.text)
+                                          ]),
                                         );
                                       },
                                     );
