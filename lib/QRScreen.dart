@@ -62,9 +62,10 @@ class _QRScreenState extends State<QRScreen> {
                               children: <Widget>[
                                 TextFormField(
                                   controller: _qrTextEditingController,
+                                  keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
-                                      hintText: 'QR input',
-                                      labelText: 'QR input',
+                                      hintText: 'Enter Phone Number',
+                                      labelText: 'Your Phone Number',
                                       border: OutlineInputBorder()),
                                 ),
                                 SizedBox(
@@ -104,7 +105,7 @@ class _QRScreenState extends State<QRScreen> {
                                   height: 20,
                                 ),
                                 Text(
-                                    "Any one can start conversation with you by scanning the qr code."),
+                                    "Any one can start conversation with you by scanning the generated QR code."),
                               ],
                             ),
                           ),
