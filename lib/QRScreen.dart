@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
+import 'package:country_code_picker/country_code_picker.dart';
+
 
 class QRScreen extends StatefulWidget {
   @override
@@ -8,6 +10,13 @@ class QRScreen extends StatefulWidget {
 
 class _QRScreenState extends State<QRScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
+
+  var countryCode = "91";
+
+  void _changedcountry(ct) {
+    countryCode = ct.toString().substring(1);
+    print(countryCode);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +69,21 @@ class _QRScreenState extends State<QRScreen> {
                           child: SingleChildScrollView(
                             child: Column(
                               children: <Widget>[
+                                CountryCodePicker(
+                                  onChanged: _changedcountry,
+                                  // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                  initialSelection: 'IN',
+                                  favorite: ['+91', 'IN'],
+                                  // optional. Shows only country name and flag
+                                  showCountryOnly: false,
+                                  // optional. Shows only country name and flag when popup is closed.
+                                  showOnlyCountryWhenClosed: false,
+                                  // optional. aligns the flag and the Text left
+                                  alignLeft: false,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
                                 TextFormField(
                                   controller: _qrTextEditingController,
                                   keyboardType: TextInputType.number,
@@ -86,7 +110,7 @@ class _QRScreenState extends State<QRScreen> {
                                                   BarcodeQRCorrectionLevel.high,
                                             ),
                                             data:
-                                                'https://api.WhatsApp.com/send?phone=' +
+                                                'https://api.WhatsApp.com/send?phone=' + countryCode + 
                                                     _qrTextEditingController
                                                         .text,
                                             width: 200,
