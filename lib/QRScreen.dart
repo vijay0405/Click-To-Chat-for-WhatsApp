@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 
-class QRScreen extends StatelessWidget {
+class QRScreen extends StatefulWidget {
+  @override
+  _QRScreenState createState() => _QRScreenState();
+}
+
+class _QRScreenState extends State<QRScreen> {
   final dm = Barcode.dataMatrix();
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formKey = GlobalKey();
     var phoneNumber = "";
-    TextEditingController searchEditor = TextEditingController();
+    TextEditingController _qrTextEditingController = TextEditingController();
+
+    _generateQR(text) {
+      setState(() {
+        phoneNumber = 'https://api.WhatsApp.com/send?phone=' + text;
+        print("updated phone number");
+      });
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -22,24 +32,34 @@ class QRScreen extends StatelessWidget {
               barcode: Barcode.qrCode(
                 errorCorrectLevel: BarcodeQRCorrectionLevel.high,
               ),
-              data: 'https://api.WhatsApp.com/send?phone=' + phoneNumber,
+              data: phoneNumber,
               width: 200,
               height: 200,
             ),
-            TextField(
-                controller: searchEditor,
-                autofocus: false,
-                keyboardType: TextInputType.number,
-                onChanged: (str) {
-                  phoneNumber = (str == null) ? "" : str;
-                }),
+            TextFormField(
+              controller: _qrTextEditingController,
+              decoration: InputDecoration(
+                  hintText: 'QR input',
+                  labelText: 'QR input',
+                
+                  border: OutlineInputBorder()),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            FlatButton(
+              color: Colors.blue,
+              onPressed: () => _generateQR(_qrTextEditingController.text),
+              child: Text(
+                'Generate QR',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
             SizedBox(
               height: 20,
             ),
             Text(
                 "Any one can start conversation with you by scanning the qr code."),
-            // Text("Ex: (8099891235)",
-            //     style: TextStyle(fontFamily: "RobotoCondensed"))
           ],
         ),
       ),
