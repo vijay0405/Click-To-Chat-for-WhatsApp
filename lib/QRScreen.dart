@@ -7,8 +7,6 @@ class QRScreen extends StatefulWidget {
 }
 
 class _QRScreenState extends State<QRScreen> {
-  final dm = Barcode.dataMatrix();
-
   @override
   Widget build(BuildContext context) {
     var phoneNumber = "";
@@ -28,20 +26,11 @@ class _QRScreenState extends State<QRScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            BarcodeWidget(
-              barcode: Barcode.qrCode(
-                errorCorrectLevel: BarcodeQRCorrectionLevel.high,
-              ),
-              data: phoneNumber,
-              width: 200,
-              height: 200,
-            ),
             TextFormField(
               controller: _qrTextEditingController,
               decoration: InputDecoration(
                   hintText: 'QR input',
                   labelText: 'QR input',
-                
                   border: OutlineInputBorder()),
             ),
             SizedBox(
@@ -49,7 +38,26 @@ class _QRScreenState extends State<QRScreen> {
             ),
             FlatButton(
               color: Colors.blue,
-              onPressed: () => _generateQR(_qrTextEditingController.text),
+              onPressed: () {
+                return showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      // Retrieve the text the that user has entered by using the
+                      // TextEditingController.
+                      content: BarcodeWidget(
+                        barcode: Barcode.qrCode(
+                          errorCorrectLevel: BarcodeQRCorrectionLevel.high,
+                        ),
+                        data: 'https://api.WhatsApp.com/send?phone=' +
+                            _qrTextEditingController.text,
+                        width: 200,
+                        height: 200,
+                      ),
+                    );
+                  },
+                );
+              },
               child: Text(
                 'Generate QR',
                 style: TextStyle(color: Colors.white),
