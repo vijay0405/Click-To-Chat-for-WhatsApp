@@ -103,24 +103,35 @@ class _QRScreenState extends State<QRScreen> {
                                         return AlertDialog(
                                           // Retrieve the text the that user has entered by using the
                                           // TextEditingController.
-                                          content: Column(children: <Widget>[
-                                            BarcodeWidget(
-                                              barcode: Barcode.qrCode(
-                                                errorCorrectLevel:
-                                                    BarcodeQRCorrectionLevel
-                                                        .high,
-                                              ),
-                                              data:
-                                                  'https://api.WhatsApp.com/send?phone=' +
+                                          content: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: <Widget>[
+                                                BarcodeWidget(
+                                                  barcode: Barcode.qrCode(
+                                                    errorCorrectLevel:
+                                                        BarcodeQRCorrectionLevel
+                                                            .high,
+                                                  ),
+                                                  data: 'https://api.WhatsApp.com/send?phone=' +
                                                       countryCode +
                                                       _qrTextEditingController
                                                           .text,
-                                              width: 200,
-                                              height: 200,
-                                            ),
-                                            Text(countryCode +
-                                                _qrTextEditingController.text)
-                                          ]),
+                                                  width: 200,
+                                                  height: 200,
+                                                ),
+                                                Text(countryCode +
+                                                    _qrTextEditingController
+                                                        .text),
+                                                Text(
+                                                    "Any one can scan the above qr code to start conversation with you.",
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            "RobotoCondensed"))
+                                              ]),
                                         );
                                       },
                                     );
