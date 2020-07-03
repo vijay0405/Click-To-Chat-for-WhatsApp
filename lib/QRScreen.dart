@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:share/share.dart';
 
 class QRScreen extends StatefulWidget {
   @override
@@ -130,7 +131,17 @@ class _QRScreenState extends State<QRScreen> {
                                                     "Any one can scan the above qr code to start conversation with you.",
                                                     style: TextStyle(
                                                         fontFamily:
-                                                            "RobotoCondensed"))
+                                                            "RobotoCondensed")),
+                                                FlatButton.icon(
+                                                    onPressed: () {
+                                                      Share.share(
+                                                          'https://api.WhatsApp.com/send?phone=' +
+                                                              countryCode +
+                                                              _qrTextEditingController
+                                                                  .text);
+                                                    },
+                                                    icon: Icon(Icons.share),
+                                                    label: Text("share"))
                                               ]),
                                         );
                                       },
