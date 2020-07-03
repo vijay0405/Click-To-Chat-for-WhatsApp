@@ -26,7 +26,7 @@ class MainDrawer extends StatelessWidget {
           padding: EdgeInsets.all(20),
           alignment: Alignment.centerLeft,
           color: Colors.teal,
-          child: Text('WhatsApp Number',
+          child: Text('WatsApp Number',
               style: TextStyle(
                 fontSize: 20,
                 color: Color.fromRGBO(255, 254, 229, 1),
