@@ -4,4 +4,6 @@ Watsapp number will let you send watsapp messages directly to numbers without sa
 
 <img src="https://raw.githubusercontent.com/vijay0405/whatsapp-number/master/homeScreen.png" width="256" height="512"  title="screenshot">
 
+Added support for generating qr code and sharing 
+
 
